@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Password Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-8">Futuristic Password Generator</h1>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4">Single Password</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="singlePasswordLength" class="block text-sm font-medium">Password Length: <span id="singleLengthValue">12</span></label>
+                        <input type="range" id="singlePasswordLength" min="8" max="30" value="12" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <div>
+                        <label for="singlePasswordStrength" class="block text-sm font-medium">Password Strength</label>
+                        <select id="singlePasswordStrength" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-gray-700">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <button id="generateSingle" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105">
+                        <i class="fas fa-sync-alt mr-2"></i> Generate Password
+                    </button>
+                    <div class="relative">
+                        <input type="text" id="singlePassword" readonly class="w-full bg-gray-700 text-white py-2 px-4 pr-10 rounded-md">
+                        <button id="copySingle" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4">Bulk Passwords</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="bulkPasswordLength" class="block text-sm font-medium">Password Length: <span id="bulkLengthValue">12</span></label>
+                        <input type="range" id="bulkPasswordLength" min="8" max="30" value="12" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <div>
+                        <label for="bulkPasswordStrength" class="block text-sm font-medium">Password Strength</label>
+                        <select id="bulkPasswordStrength" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-gray-700">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="bulkCount" class="block text-sm font-medium">Number of Passwords</label>
+                        <input type="number" id="bulkCount" min="1" max="100" value="5" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-gray-700">
+                    </div>
+                    <button id="generateBulk" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105">
+                        <i class="fas fa-sync-alt mr-2"></i> Generate Bulk Passwords
+                    </button>
+                    <textarea id="bulkPasswords" readonly rows="10" class="w-full bg-gray-700 text-white py-2 px-4 rounded-md font-mono text-sm"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="text-center mt-8 text-gray-400">
+        Created with <span class="text-red-500">&heart;</span> by <b><a href="//caliph.dev" target="_blank">caliphdev</a></b>
+    </footer>
+
+    <!-- Popup message -->
+    <div id="popup" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg transform transition-all duration-300 opacity-0 translate-y-[-1rem]">
+        Password copied to clipboard!
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
